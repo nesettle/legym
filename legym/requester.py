@@ -3,6 +3,7 @@ import os
 
 import requests
 
+from .api import __api__
 from .response import LegymResponse
 
 
@@ -11,46 +12,8 @@ class LegymRequester:
 
     def __init__(self) -> None:
         """Read configurations."""
-        self.__read_api()
-        self.__read_headers()
-
-    def __read_api(self) -> None:
-        """Read API configuration and store in a dictionary,
-        which structured as:
-        ```
-        {
-            "name": {
-                "url": "https://example.com",
-                "method": "get/post/put",
-                "data": {},
-                "description": "Description of this API"
-            }
-        }
-        ```
-        """
-        api_path = os.path.join("config", "api.json")
-
-        try:
-            with open(api_path, "r", encoding="utf-8") as fr:
-                self._api_dict: dict[str, dict] = json.load(fr)
-
-        except FileNotFoundError:
-            raise FileNotFoundError(
-                f"API config not found under path '{api_path}'"
-            ) from None
-
-    def __read_headers(self) -> None:
-        """Read headers configuration."""
-        headers_path = os.path.join("config", "headers.json")
-
-        try:
-            with open(headers_path, "r", encoding="utf-8") as fr:
-                self._headers: dict = json.load(fr)
-
-        except FileNotFoundError:
-            raise FileNotFoundError(
-                f"Headers config not found under path '{headers_path}'"
-            ) from None
+        self._headers = {"content-type": "application/json"}
+        self._api_dict = __api__
 
     def request(self, api_name: str) -> LegymResponse:
         """Issue a request.
