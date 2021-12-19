@@ -2,7 +2,7 @@ import json
 
 import requests
 
-from .api import __api__
+from .official import __api__
 from .response import LegymResponse
 
 
