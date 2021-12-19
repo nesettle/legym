@@ -17,11 +17,13 @@ class LegymRequester:
     def __str__(self) -> str:
         return "<Legym Requester>"
 
-    def request(self, api_name: str) -> LegymResponse:
+    def request(self, api_name: str, persist_path: str = "") -> LegymResponse:
         """Issue a request.
 
         Args:
             api_name: Name of API, to which the request is issued.
+            persist_path: File path to persist response, default to "",
+            in which case the response will not be persisted.
 
         Returns:
             Processed response.
@@ -40,7 +42,11 @@ class LegymRequester:
         else:
             raise Exception("invalid request type")
 
-        return LegymResponse(response, name=api_name)
+        legym_response = LegymResponse(response, name=api_name)
+        if persist_path != "":
+            legym_response.persist()
+
+        return legym_response
 
     def _update_api(self, api_name: str, new_data: dict) -> None:
         """Update data of API.
