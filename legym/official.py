@@ -2,7 +2,7 @@ __api__ = {
     "activities": {
         "url": "https://cpes.legym.cn/education/app/activity/getActivityList",
         "method": "post",
-        "data": {"page": 1, "size": 10},
+        "data": {"page": 1, "size": 50},
         "description": "Get outdoor activity list",
     },
     "limit": {
