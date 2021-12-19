@@ -19,6 +19,9 @@ class Legym(LegymRequester):
         super().__init__()
         self.login(username, password)
 
+    def __str__(self) -> str:
+        return f"<Legym Application>"
+
     def __request_semester(self) -> None:
         """Get semester ID and update relevant API."""
         response = self.request("semester")
