@@ -58,18 +58,22 @@ class LegymResponse:
 
         raise LegymException(f"{self.__name} API 的响应没有 `{key}` 字段")
 
-    def persist(self, filepath: str) -> None:
+    def persist(self, filepath: str = "") -> None:
         """Persist response JSON.
 
         Args:
-            filepath: File path to persist the response.
+            filepath: File path to persist the response, default to "",
+            in which case response will be persisted as ".{self.__name}.json".
 
         Note:
             Mostly for debug purpose.
         """
-        dirpath = os.path.dirname(filepath)
-        if dirpath != "" and not os.path.exists(dirpath):
-            os.mkdir(dirpath)
+        if filepath == "":
+            filepath = f"{self.__name}.json"
+        else:
+            dirpath = os.path.dirname(filepath)
+            if dirpath != "" and not os.path.exists(dirpath):
+                os.mkdir(dirpath)
 
         with open(filepath, "w", encoding="utf-8") as fw:
             json.dump(self.__body, fw, ensure_ascii=False)
