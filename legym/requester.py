@@ -1,5 +1,4 @@
 import json
-import os
 
 import requests
 
@@ -14,6 +13,9 @@ class LegymRequester:
         """Read configurations."""
         self._headers = {"content-type": "application/json"}
         self._api_dict = __api__
+
+    def __str__(self) -> str:
+        return "<Legym Requester>"
 
     def request(self, api_name: str) -> LegymResponse:
         """Issue a request.
