@@ -8,6 +8,9 @@ class LegymActivities:
         """Parse each activity."""
         self.__activities = [LegymActivity(activity) for activity in activities]
 
+    def __str__(self) -> str:
+        return "\n".join([str(activity) for activity in self.__activities])
+
     def search(
         self,
         id: str = "",
