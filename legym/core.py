@@ -61,7 +61,7 @@ class Legym(LegymRequester):
         specified_activities = self._activities.search(name=activity_name)
 
         if len(specified_activities) == 0:
-            raise LegymException(f"找不到活动：{activity_name}")
+            raise LegymException(f"找不到活动或活动未开始：{activity_name}")
         else:
             return specified_activities[0]
 
