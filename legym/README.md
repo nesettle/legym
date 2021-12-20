@@ -3,14 +3,14 @@
 These are the most important APIs to developers, as well as the most frequently accessed ones.
 
 - [Legym API](#legym-api)
-  - [1. Creating LegymUser object](#1-creating-legymuser-object)
+  - [1. Create LegymUser object](#1-create-legymuser-object)
   - [2. View user info](#2-view-user-info)
   - [3. Get activity list](#3-get-activity-list)
   - [4. Register activity](#4-register-activity)
   - [5. Sign in activity](#5-sign-in-activity)
   - [6. Upload running data](#6-upload-running-data)
 
-## 1. Creating LegymUser object
+## 1. Create LegymUser object
 
 `LegymUser` is the basic operating unit of legym module, i.e. everything this module can do is based on this type of object. It represents a user who is using Legym App.
 
