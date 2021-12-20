@@ -13,7 +13,9 @@ It provides API to:
 
 ## Install
 
-    pip install legym
+This module has not yet been published to https://pypi.org, because it is going through tests right now. If you want to participate in testing process, you can download alpha version via:
+
+    pip install -i https://test.pypi.org/simple/ legym==0.3
 
 ## Contribute
 
