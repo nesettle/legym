@@ -17,13 +17,39 @@ class Legym(LegymRequester):
             password: Legym password.
         """
         super().__init__()
-        self.login(username, password)
+        self.__login(username, password)
 
     def __str__(self) -> str:
         return f"<Legym Application>"
 
     def __repr__(self) -> str:
         return f"<Legym Application>"
+
+    def __login(self, username: str, password: str) -> None:
+        """Log in Legym account.
+
+        Args:
+            username: Legym username.
+            password: Legym password.
+        """
+        self._update_api("login", {"userName": username, "password": password})
+        response = self.request("login")
+
+        self._headers.update(
+            {
+                "authorization": f"Bearer {response['accessToken']}",
+                "Organization": response["schoolId"],
+            }
+        )
+        self._update_api("sign", {"userId": response["id"]})
+        self.__request_semester()
+        self.__request_limit()
+        self._activities = self.get_activities()
+
+        self.__real_name = response["realName"]
+        self.__nick_name = response["nickName"]
+        self.__school = response["schoolName"]
+        self.__organization = response["organizationName"]
 
     def __request_semester(self) -> None:
         """Get semester ID and update relevant API."""
@@ -94,33 +120,6 @@ class Legym(LegymRequester):
         self._update_api("sign", {"activityId": activity_id})
         response = self.request("sign")
         return response["message"]
-
-    def login(self, username: str, password: str) -> tuple[str, str]:
-        """Log in Legym account.
-
-        Args:
-            username: Legym username.
-            password: Legym password.
-
-        Returns:
-            - [0] User name.
-            - [1] School name.
-        """
-        self._update_api("login", {"userName": username, "password": password})
-        response = self.request("login")
-
-        self._headers.update(
-            {
-                "authorization": f"Bearer {response['accessToken']}",
-                "Organization": response["schoolId"],
-            }
-        )
-        self._update_api("sign", {"userId": response["id"]})
-        self.__request_semester()
-        self.__request_limit()
-        self._activities = self.get_activities()
-
-        return response["realName"], response["schoolName"]
 
     def get_activities(self) -> LegymActivities:
         """Get activity list.
@@ -216,3 +215,23 @@ class Legym(LegymRequester):
 
         response = self.request("running")
         return distance, response["data"]
+
+    @property
+    def real_name(self) -> str:
+        """Set real name as read-only."""
+        return self.__real_name
+
+    @property
+    def nick_name(self) -> str:
+        """Set nick name as read-only."""
+        return self.__nick_name
+
+    @property
+    def school(self) -> str:
+        """Set school name as read-only."""
+        return self.__school
+
+    @property
+    def organization(self) -> str:
+        """Set organization name as read-only."""
+        return self.__organization
