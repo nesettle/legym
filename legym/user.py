@@ -78,7 +78,7 @@ class LegymUser(LegymRequester):
         else:
             return available_activities[0]
 
-    def __get_specified_activity(self, activity_name: str) -> LegymActivity:
+    def __get_specified_available_activity(self, activity_name: str) -> LegymActivity:
         """Get specified activity.
 
         Args:
@@ -87,10 +87,12 @@ class LegymUser(LegymRequester):
         Returns:
             Activity object.
         """
-        specified_activities = self._activities.search(name=activity_name)
+        specified_activities = self._activities.search(
+            name=activity_name, state=ActivityState.available
+        )
 
         if len(specified_activities) == 0:
-            raise LegymException(f"找不到活动或活动未开始：{activity_name}")
+            raise LegymException(f"活动当前不可报名：{activity_name}")
         else:
             return specified_activities[0]
 
@@ -143,10 +145,11 @@ class LegymUser(LegymRequester):
             - [1] `True` on success, or `False` on failure.
             - [2] Reason of success or failure.
         """
+        self._activities = self.get_activities()
         activity = (
             self.__get_first_available_activity()
             if activity_name == ""
-            else self.__get_specified_activity(activity_name)
+            else self.__get_specified_available_activity(activity_name)
         )
 
         if activity.state == ActivityState.signed:
@@ -166,6 +169,7 @@ class LegymUser(LegymRequester):
             Results of each task, structured like:
             `(("Task 1", True, "Signed in!"), ...)`
         """
+        self._activities = self.get_activities()
         activities = self._activities.search(state=ActivityState.registered)
 
         results = []
