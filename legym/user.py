@@ -6,8 +6,8 @@ from .exception import LegymException
 from .requester import LegymRequester
 
 
-class Legym(LegymRequester):
-    """Legym hacker application."""
+class LegymUser(LegymRequester):
+    """Legym user, storing info and issuing requests."""
 
     def __init__(self, username: str, password: str) -> None:
         """Initialize requester and log in account.

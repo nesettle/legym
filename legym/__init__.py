@@ -1,2 +1,2 @@
-from .core import Legym
 from .exception import LegymException
+from .user import LegymUser
