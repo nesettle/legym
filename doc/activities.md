@@ -27,6 +27,8 @@ But you can get an instance after you create a `LegymUser` object, and call meth
 ...
 ```
 
+For more details about `LegymActivity`, read doc [here](https://github.com/MrCaiDev/legym/blob/master/doc/activity.md).
+
 ## 2. Search with given rules
 
 Method `search()` is the only accessible API of `LegymActivities` instances. You can specify your own rules to filter activities. In this document we will take activities below as example:
@@ -55,3 +57,5 @@ For the first example, we attempts to search for activity whose ID equals "8a978
 For the second example, we attempts to search for activity whose name contains "综训馆". Yes, we are ok with abbreviation, as long as it is a substring of full name.
 
 For the third example, we specifies both name and state at the same time, indicating you can apply several rules to personalize your searching.
+
+> I found activity state specification is a little inconvenient now - you need to import an extra and long class `legym.activity.ActivityState`, so we may delete this class afterwards and instead specify state with `str` like "signed" and "available".
