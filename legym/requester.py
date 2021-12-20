@@ -17,6 +17,9 @@ class LegymRequester:
     def __str__(self) -> str:
         return "<Legym Requester>"
 
+    def __repr__(self) -> str:
+        return "<Legym Requester>"
+
     def request(self, api_name: str, persist_path: str = "") -> LegymResponse:
         """Issue a request.
 

@@ -11,6 +11,9 @@ class LegymActivities:
     def __str__(self) -> str:
         return "\n".join([str(activity) for activity in self.__activities])
 
+    def __repr__(self) -> str:
+        return "\n".join([str(activity) for activity in self.__activities])
+
     def search(
         self,
         id: str = "",

@@ -25,6 +25,9 @@ class LegymResponse:
     def __str__(self) -> str:
         return f"<Legym Response name='{self.__name}'>"
 
+    def __repr__(self) -> str:
+        return f"<Legym Response name='{self.__name}'>"
+
     def __parse_to_json(self) -> None:
         """Parse response to JSON form."""
         try:

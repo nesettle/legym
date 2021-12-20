@@ -34,6 +34,9 @@ class LegymActivity:
     def __str__(self) -> str:
         return f"<Legym Activity id='{self.__id}' name='{self.__name}' state='{self.__state.name}'>"
 
+    def __repr__(self) -> str:
+        return f"<Legym Activity id='{self.__id}' name='{self.__name}' state='{self.__state.name}'>"
+
     @property
     def id(self) -> str:
         """Set activity ID as read-only."""
