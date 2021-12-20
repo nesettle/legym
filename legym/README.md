@@ -113,6 +113,8 @@ In the second example shown above, the user does not specify activity name: this
 
 In the third example shown above, the user specifies an incorrect activity name. This will cause the program to throw a `LegymException`. Developers can catch and decide how to tackle it in their own codes.
 
+For more details about `LegymException`, read doc [here](https://www.bilibili.com/video/BV1PN411X7QW). (not written yet, coming soon 🥰)
+
 > Actually I think returning a tuple like ('', False, '不存在该活动') might be a better solution. We will consider adding it in later versions.
 
 ## 5. Sign in activity
