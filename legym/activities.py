@@ -32,12 +32,12 @@ class LegymActivities:
         results = self.__activities.copy()
 
         if id != "":
-            results = list(filter(lambda activity: activity.id == id, results))
+            results = list(filter(lambda act: act.id == id, results))
         if code != "":
-            results = list(filter(lambda activity: activity.code == code, results))
+            results = list(filter(lambda act: act.code == code, results))
         if name != "":
-            results = list(filter(lambda activity: activity.name == name, results))
+            results = list(filter(lambda act: act.name.find(name) != -1, results))
         if state != ActivityState.unknown:
-            results = list(filter(lambda activity: activity.state == state, results))
+            results = list(filter(lambda act: act.state == state, results))
 
         return results
