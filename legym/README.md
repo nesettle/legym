@@ -1,6 +1,16 @@
 # Legym API
 
-## Creating LegymUser object
+These are the most important APIs to developers, as well as the most frequently accessed ones.
+
+- [Legym API](#legym-api)
+  - [1. Creating LegymUser object](#1-creating-legymuser-object)
+  - [2. View user info](#2-view-user-info)
+  - [3. Get activity list](#3-get-activity-list)
+  - [4. Register activity](#4-register-activity)
+  - [5. Sign in activity](#5-sign-in-activity)
+  - [6. Upload running data](#6-upload-running-data)
+
+## 1. Creating LegymUser object
 
 `LegymUser` is the basic operating unit of legym module, i.e. everything this module can do is based on this type of object. It represents a user who is using Legym App.
 
@@ -30,7 +40,7 @@ Via creating instance:
 
 Both of these will return a `LegymUser` instance, which has a list of methods to call.
 
-## View user info
+## 2. View user info
 
 Once we create a `LegymUser` instance, we can view his basic information.
 
@@ -64,7 +74,7 @@ Legym now supports 4 types of user info:
 '信息与通信工程学院'
 ```
 
-## Get activity list
+## 3. Get activity list
 
 Method `get_activities()` can issue a request to Legym official API, and return current activities, which are exactly those the user can see on his Legym App.
 
@@ -79,7 +89,7 @@ Method `get_activities()` can issue a request to Legym official API, and return 
 
 For more details about `LegymActivities` object, read doc [here](https://www.bilibili.com/video/BV1ER4y1E7qn). (not written yet, coming soon 🥰)
 
-## Register activity
+## 4. Register activity
 
 Method `register()` can register an activity for user.
 
@@ -105,7 +115,7 @@ In the third example shown above, the user specifies an incorrect activity name.
 
 > Actually I think returning a tuple like ('', False, '不存在该活动') might be a better solution. We will consider adding it in later versions.
 
-## Sign in activity
+## 5. Sign in activity
 
 Method `sign()` can sign in each activity registered by the user.
 
@@ -118,7 +128,7 @@ In last chapter the user registered two activities, and now he signs in both act
 
 `LegymException` will be caught inside this method, so don't worry about tackling this exception in your own code.
 
-## Upload running data
+## 6. Upload running data
 
 Method `running()` can upload running data for the user.
 
