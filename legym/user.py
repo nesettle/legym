@@ -20,10 +20,10 @@ class LegymUser(LegymRequester):
         self.__login(username, password)
 
     def __str__(self) -> str:
-        return f"<Legym Application>"
+        return f"<Legym User {self.__real_name}>"
 
     def __repr__(self) -> str:
-        return f"<Legym Application>"
+        return f"<Legym User {self.__real_name}>"
 
     def __login(self, username: str, password: str) -> None:
         """Log in Legym account.
