@@ -87,7 +87,7 @@ Method `get_activities()` can issue a request to Legym official API, and return 
 ...
 ```
 
-For more details about `LegymActivities` object, read doc [here](https://www.bilibili.com/video/BV1ER4y1E7qn). (not written yet, coming soon 🥰)
+For more details about `LegymActivities` object, read doc [here](https://github.com/MrCaiDev/legym/blob/master/doc/activities.md). (not written yet, coming soon 🥰)
 
 ## 4. Register activity
 
