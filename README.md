@@ -21,6 +21,12 @@ This module has not yet been published to https://pypi.org, because it is going 
 
 No rules of contributing at present, so feel free to pull request and contribute!
 
+## Links
+
+- [legym_fk](https://github.com/fullstack-sake/legym_fk): Where the idea of this project comes from.
+- [legym-cli](https://github.com/MrCaiDev/legym-cli): Example of an CLI application
+built upon this module.
+
 ## Disclaimer
 
 - This project is launched by two college students, mainly for the purpose of enhancing Python coding skill. As such, this module is only allowed for learning and private building. **Commercial use is strictly forbidden.**
